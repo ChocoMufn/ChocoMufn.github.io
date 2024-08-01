@@ -1,5 +1,67 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Website</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background: linear-gradient(to right, #2b5876, #4e4376);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .floating-text {
+            position: absolute;
+            animation: float 10s linear infinite;
+            font-size: 5rem;
+            font-weight: bold;
+            opacity: 0.1;
+        }
+        @keyframes float {
+            0% {
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            100% {
+                top: -10%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        .main-text {
+            font-size: 2rem;
+            z-index: 10;
+        }
+    </style>
+</head>
 <body>
-    <h1>Hello, World!</h1>
+    <div class="floating-text">Vraj</div>
+    <div class="main-text">
+        <h1>Welcome to Vraj's Cool Website!</h1>
+        <p>Here you can find amazing content and exciting features.</p>
+    </div>
+    <script>
+        function createFloatingText() {
+            const floatingText = document.createElement('div');
+            floatingText.className = 'floating-text';
+            floatingText.innerText = 'Vraj';
+            document.body.appendChild(floatingText);
+
+            setTimeout(() => {
+                document.body.removeChild(floatingText);
+                createFloatingText();
+            }, 10000);
+        }
+
+        createFloatingText();
+    </script>
 </body>
 </html>
